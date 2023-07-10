@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:demo_app/common/ui_kit/app_bars/i_app_bar.dart';
-import 'package:demo_app/common/ui_kit/buttons/cancel_button.dart';
-import 'package:demo_app/common/ui_kit/buttons/confirm_button.dart';
-import 'package:demo_app/common/ui_kit/ui_constants.dart';
+import 'package:flutter_interngram_delta/common/ui_kit/app_bars/i_app_bar.dart';
+import 'package:flutter_interngram_delta/common/ui_kit/buttons/cancel_button.dart';
+import 'package:flutter_interngram_delta/common/ui_kit/buttons/confirm_button.dart';
+import 'package:flutter_interngram_delta/common/ui_kit/ui_constants.dart';
 
 class LibraryAppBar extends StatelessWidget with PreferredSizeWidget {
   final VoidCallback onPressed;

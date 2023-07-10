@@ -6,5 +6,6 @@ class PostValue {
   final String? createdAt;
   final String? updatedAt;
 
-  PostValue(this.id, this.creatorId, this.source, this.description, this.createdAt, this.updatedAt);
+  PostValue(this.id, this.creatorId, this.source, this.description,
+      this.createdAt, this.updatedAt);
 }

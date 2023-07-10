@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:demo_app/common/ui_kit/ui_constants.dart';
+import 'package:flutter_interngram_delta/common/ui_kit/ui_constants.dart';
 
 class IAppBar extends AppBar {
   IAppBar({

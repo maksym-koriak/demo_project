@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:demo_app/common/app_colors/app_colors.dart';
+import 'package:flutter_interngram_delta/common/app_colors/app_colors.dart';
 
 class UIConstants {
   static const int errorMaxLines = 3;

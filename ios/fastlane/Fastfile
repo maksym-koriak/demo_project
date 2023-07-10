@@ -1,0 +1,19 @@
+default_platform(:ios)
+
+# Team
+team_id = "L3QAWRZFYR"
+
+platform :ios do
+ desc "Deploy iOS to Firebase"
+ lane :deploy_ios do
+    build_ios_app(
+          export_options: {
+              method: "ad-hoc"
+          }
+        )
+     firebase_app_distribution(
+               app: "1:1026635662194:ios:36ab97e81b6269ebb613eb",
+               groups: "flutter-team"
+           )
+ end
+end

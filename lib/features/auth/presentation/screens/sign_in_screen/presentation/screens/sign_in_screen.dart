@@ -49,7 +49,8 @@ class SignInScreen extends StatelessWidget {
                     context: context,
                     builder: (_) => CupertinoAlertDialog(
                       title: Text(AppLocalizations.of(context)!.incorrectMail),
-                      content: Text(AppLocalizations.of(context)!.mailOrPhoneNumberDoesNotAppear),
+                      content: Text(AppLocalizations.of(context)!
+                          .mailOrPhoneNumberDoesNotAppear),
                       actions: [
                         ITextButton.blue(
                           onPressed: () {
@@ -78,7 +79,8 @@ class SignInScreen extends StatelessWidget {
                   onTap: () {
                     FocusManager.instance.primaryFocus?.unfocus();
                   },
-                  child: BlocListener<UnauthorizedFlowBloc, UnauthorizedFlowState>(
+                  child:
+                      BlocListener<UnauthorizedFlowBloc, UnauthorizedFlowState>(
                     listener: (context, state) {
                       state.maybeWhen(
                         success: (bool isFirstTime) {
@@ -95,7 +97,8 @@ class SignInScreen extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                AppLocalizations.of(context)!.invalidFacebookSignIn,
+                                AppLocalizations.of(context)!
+                                    .invalidFacebookSignIn,
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -105,7 +108,8 @@ class SignInScreen extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                AppLocalizations.of(context)!.invalidGoogleSignIn,
+                                AppLocalizations.of(context)!
+                                    .invalidGoogleSignIn,
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -114,14 +118,16 @@ class SignInScreen extends StatelessWidget {
                         serverFailure: () {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text(AppLocalizations.of(context)!.serverError),
+                              content: Text(
+                                  AppLocalizations.of(context)!.serverError),
                             ),
                           );
                         },
                         unknownFailure: () {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text(AppLocalizations.of(context)!.unknownError),
+                              content: Text(
+                                  AppLocalizations.of(context)!.unknownError),
                             ),
                           );
                         },
@@ -129,7 +135,8 @@ class SignInScreen extends StatelessWidget {
                       );
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: widePadding),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: widePadding),
                       child: SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),
                         child: Column(
@@ -143,11 +150,13 @@ class SignInScreen extends StatelessWidget {
                             TextField(
                               controller: usernameController,
                               decoration: InputDecoration(
-                                hintText: AppLocalizations.of(context)!.loginHint,
+                                hintText:
+                                    AppLocalizations.of(context)!.loginHint,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: widePadding),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: widePadding),
                               child: PasswordTextField(
                                 controller: passwordController,
                               ),
@@ -160,7 +169,8 @@ class SignInScreen extends StatelessWidget {
                                   orElse: () => false,
                                 ),
                                 child: Text(
-                                  AppLocalizations.of(context)!.invalidPhoneEmailPassword,
+                                  AppLocalizations.of(context)!
+                                      .invalidPhoneEmailPassword,
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyMedium
@@ -169,7 +179,8 @@ class SignInScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(bottom: widePadding),
+                              padding:
+                                  const EdgeInsets.only(bottom: widePadding),
                               child: Align(
                                 alignment: Alignment.centerRight,
                                 child: ForgotPassword(
@@ -182,14 +193,16 @@ class SignInScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: widePadding),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: widePadding),
                               child: SizedBox(
                                 width: buttonWidth,
                                 height: buttonHeight,
                                 child: ElevatedButton(
                                   onPressed: isConnected
                                       ? () {
-                                          BlocProvider.of<SignInBloc>(context).add(
+                                          BlocProvider.of<SignInBloc>(context)
+                                              .add(
                                             SignInEvent.trySignIn(
                                               usernameController.text,
                                               passwordController.text,
@@ -199,15 +212,18 @@ class SignInScreen extends StatelessWidget {
                                       : null,
                                   child: state.maybeWhen(
                                     loading: () => CupertinoActivityIndicator(
-                                      color: Theme.of(context).scaffoldBackgroundColor,
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
                                     ),
-                                    orElse: () => Text(AppLocalizations.of(context)!.logIn),
+                                    orElse: () => Text(
+                                        AppLocalizations.of(context)!.logIn),
                                   ),
                                 ),
                               ),
                             ),
                             const Padding(
-                              padding: EdgeInsets.symmetric(vertical: widePadding),
+                              padding:
+                                  EdgeInsets.symmetric(vertical: widePadding),
                               child: OrText(),
                             ),
                             Padding(
@@ -215,25 +231,30 @@ class SignInScreen extends StatelessWidget {
                               child: LogInFacebookRow(
                                 onTap: isConnected
                                     ? () {
-                                        BlocProvider.of<UnauthorizedFlowBloc>(context).add(
-                                          const UnauthorizedFlowEvent.signInFacebook(),
+                                        BlocProvider.of<UnauthorizedFlowBloc>(
+                                                context)
+                                            .add(
+                                          const UnauthorizedFlowEvent
+                                              .signInFacebook(),
                                         );
                                       }
                                     : () {},
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: widePadding),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: widePadding),
                               child: LogInGoogleRow(
                                 onTap: isConnected
                                     ? () {
-                                        BlocProvider.of<UnauthorizedFlowBloc>(context).add(
-                                          const UnauthorizedFlowEvent.signInGoogle(),
+                                        BlocProvider.of<UnauthorizedFlowBloc>(
+                                                context)
+                                            .add(
+                                          const UnauthorizedFlowEvent
+                                              .signInGoogle(),
                                         );
                                       }
-                                    : () {
-                                  print('disconnected');
-                                },
+                                    : () {},
                               ),
                             ),
                             const SizedBox(height: gapFromLogIn),

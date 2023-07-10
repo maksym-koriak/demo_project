@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_interngram_delta/common/ui_kit/app_bars/empty_app_bar.dart';
 import 'package:flutter_interngram_delta/core/presentation/routing/app_router.gr.dart';
 import 'package:flutter_interngram_delta/core/presentation/wrappers/authorized_flow_wrapper/bloc/authorized_flow_bloc.dart';
-import 'package:flutter_interngram_delta/core/presentation/wrappers/unauthorized_flow_wrapper/bloc/unauthorized_flow_bloc.dart';
 import 'package:flutter_interngram_delta/features/auth/presentation/screens/sign_up_screen/set_profile/bio/bio_constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_interngram_delta/features/auth/presentation/screens/sign_up_screen/set_profile/bio/bloc/bio_screen_bloc.dart';
@@ -80,8 +79,7 @@ class BioScreen extends StatelessWidget {
                           onPressed: state.when(
                             nextEnabled: () => () {
                               FocusManager.instance.primaryFocus?.unfocus();
-                              BlocProvider.of<AuthorizedFlowBloc>(context)
-                                  .add(
+                              BlocProvider.of<AuthorizedFlowBloc>(context).add(
                                 AuthorizedFlowEvent.finishOptionalSetupFlow(
                                   avatar,
                                   city,

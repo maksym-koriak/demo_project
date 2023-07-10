@@ -40,7 +40,6 @@ class EditScreen extends StatelessWidget {
     bool isNicknameValid = nickname != null;
     bool isBioValid = true;
     bool isFullNameValid = true;
-    bool isPhotoUpdated = imageBytes != null;
 
     final TextEditingController fullNameController = TextEditingController();
     final TextEditingController nicknameController = TextEditingController();
@@ -53,7 +52,6 @@ class EditScreen extends StatelessWidget {
     String? cityToSubmit;
     String? bioToSubmit;
 
-
     imageToSubmit = imageBytes;
     BlocProvider.of<AuthorizedFlowBloc>(context).add(
       const AuthorizedFlowEvent.getCurrentUser(),
@@ -62,11 +60,6 @@ class EditScreen extends StatelessWidget {
     return BlocBuilder<AuthorizedFlowBloc, AuthorizedFlowState>(
       builder: (context, state) {
         return state.maybeWhen(gotCurrentUser: (user) {
-          fullNameToSubmit = user.fullName;
-          nicknameToSubmit = user.nickName;
-          cityToSubmit = user.city;
-          bioToSubmit = user.bio;
-
           fullNameController.text = user.fullName ?? '';
           nicknameController.text = user.nickName!.contains('-')
               ? user.email!.replaceAll('@', '').replaceAll('gmail.com', '')
@@ -305,11 +298,13 @@ class EditScreen extends StatelessWidget {
                                     }
                                   }
                                   isFullNameValid = true;
-
-                                  fullNameBloc.add(
-                                    const EditScreenEvent.enableSubmit(),
-                                  );
-
+                                  if (isBioValid &&
+                                      isNicknameValid &&
+                                      isFullNameValid) {
+                                    fullNameBloc.add(
+                                      const EditScreenEvent.enableSubmit(),
+                                    );
+                                  }
                                   return null;
                                 },
                               ),
@@ -413,9 +408,14 @@ class EditScreen extends StatelessWidget {
                                 onBioReady: (String bio) {
                                   bioToSubmit = bio;
                                   isBioValid = true;
-
-                                  BlocProvider.of<EditScreenBloc>(context).add(
-                                      const EditScreenEvent.enableSubmit());
+                                  if (isBioValid &&
+                                      isNicknameValid &&
+                                      isFullNameValid) {
+                                    BlocProvider.of<EditScreenBloc>(context)
+                                        .add(
+                                      const EditScreenEvent.enableSubmit(),
+                                    );
+                                  }
                                 },
                                 onBioInvalid: () {
                                   isBioValid = false;
@@ -434,7 +434,6 @@ class EditScreen extends StatelessWidget {
                                 child: ElevatedButton(
                                   onPressed: state.maybeWhen(
                                     enabledSubmit: () => () {
-                                      print('try save changes');
                                       BlocProvider.of<EditScreenBloc>(context)
                                           .add(
                                         EditScreenEvent.trySaveChanges(

@@ -2,8 +2,8 @@ import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:demo_app/core/domain/failures/failures.dart';
-import 'package:demo_app/features/auth/domain/entities/auth_user.dart';
+import 'package:flutter_interngram_delta/core/domain/failures/failures.dart';
+import 'package:flutter_interngram_delta/features/auth/domain/entities/auth_user.dart';
 
 abstract class UseCase<Type, Params> {
   Future<Either<Failure, Type>> call(Params params);

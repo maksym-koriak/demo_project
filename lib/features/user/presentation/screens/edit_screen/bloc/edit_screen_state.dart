@@ -8,7 +8,8 @@ class EditScreenState with _$EditScreenState {
 
   const factory EditScreenState.disabledSubmit() = _DisabledSubmit;
 
-  const factory EditScreenState.validationSuccess(String email) = _ValidationSuccess;
+  const factory EditScreenState.validationSuccess(String email) =
+      _ValidationSuccess;
 
   const factory EditScreenState.validationFailureNicknameExists() =
       _ValidationFailureNicknameExists;
@@ -16,7 +17,8 @@ class EditScreenState with _$EditScreenState {
   const factory EditScreenState.validationFailureNicknameIsNotValid() =
       _ValidationFailureNicknameIsNotValid;
 
-  const factory EditScreenState.validationFailureUnknown() = _ValidationFailureUnknown;
+  const factory EditScreenState.validationFailureUnknown() =
+      _ValidationFailureUnknown;
 
   const factory EditScreenState.updateSuccess() = _UpdateSuccess;
 

@@ -1,3 +1,10 @@
+import 'package:flutter_interngram_delta/features/user/data/dto/follows/follows_dto.dart';
+import 'package:flutter_interngram_delta/features/user/data/dto/posts/post_dto.dart';
+import 'package:flutter_interngram_delta/features/user/domain/entities/user.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'user_dto.freezed.dart';
+
 @freezed
 class UserDto with _$UserDto {
   const UserDto._();
@@ -31,9 +38,14 @@ class UserDto with _$UserDto {
     final bio = json['bio'];
     final createdAt = json['createdAt'];
     final updatedAt = json['updatedAt'];
-    final followedBy = json['followedBy'] != null ? FollowsDto.fromJson(json['followedBy']) : null;
-    final following = json['following'] != null ? FollowsDto.fromJson(json['following']) : null;
-    final posts = json['posts'] != null ? PostDto.fromJson(json['posts']) : null;
+    final followedBy = json['followedBy'] != null
+        ? FollowsDto.fromJson(json['followedBy'])
+        : null;
+    final following = json['following'] != null
+        ? FollowsDto.fromJson(json['following'])
+        : null;
+    final posts =
+        json['posts'] != null ? PostDto.fromJson(json['posts']) : null;
     return UserDto(
       id: id,
       email: email,

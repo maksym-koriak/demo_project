@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:flutter_interngram_delta/core/presentation/routing/app_router.gr.dart';
+import 'package:flutter_interngram_delta/core/presentation/style/app_theme.dart'
+    as app_theme;
+import 'package:flutter_interngram_delta/di/di_container.dart'
+    as service_locator;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

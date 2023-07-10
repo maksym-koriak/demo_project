@@ -1,3 +1,8 @@
+import 'package:flutter_interngram_delta/features/user/domain/entities/follows/following.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'following_dto.freezed.dart';
+
 @freezed
 class FollowingDto with _$FollowingDto {
   const FollowingDto._();

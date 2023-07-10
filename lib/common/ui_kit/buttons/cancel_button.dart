@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:demo_app/common/ui_kit/buttons/i_text_button.dart';
+import 'package:flutter_interngram_delta/common/ui_kit/buttons/i_text_button.dart';
 
 class CancelButton extends StatelessWidget {
   final VoidCallback onPressed;

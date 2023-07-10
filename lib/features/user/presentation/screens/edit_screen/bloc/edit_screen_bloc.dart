@@ -14,8 +14,10 @@ part 'edit_screen_state.dart';
 part 'edit_screen_bloc.freezed.dart';
 
 class EditScreenBloc extends Bloc<EditScreenEvent, EditScreenState> {
-  final ValidateNickname _validateNickname = di.serviceLocator<ValidateNickname>();
-  final UpdateCurrentUser _updateCurrentUser = di.serviceLocator<UpdateCurrentUser>();
+  final ValidateNickname _validateNickname =
+      di.serviceLocator<ValidateNickname>();
+  final UpdateCurrentUser _updateCurrentUser =
+      di.serviceLocator<UpdateCurrentUser>();
 
   EditScreenBloc() : super(const EditScreenState.initial()) {
     on<EditScreenEvent>(

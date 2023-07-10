@@ -1,19 +1,12 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_interngram_delta/common/app_colors/app_colors.dart';
-import 'package:flutter_interngram_delta/core/presentation/routing/app_router.gr.dart';
 import 'package:flutter_interngram_delta/core/presentation/wrappers/authorized_flow_wrapper/bloc/authorized_flow_bloc.dart';
 import 'package:flutter_interngram_delta/features/auth/presentation/screens/gallery_image_picker_screen/gallery_image_picker_style_constants.dart';
-import 'package:flutter_interngram_delta/features/user/domain/entities/user.dart';
 import 'package:flutter_interngram_delta/common/app_icons/app_icons.dart';
-import 'package:flutter_interngram_delta/features/auth/presentation/screens/sign_up_screen/set_profile/bio/bio_constants.dart';
 import 'package:flutter_interngram_delta/features/user/presentation/screens/edit_screen/edit_screen_tab.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -122,12 +115,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   BottomNavigationBarItem(
                     icon: Container(
-                        decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all()),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle, border: Border.all()),
                         child: CircleAvatar(
                             radius: 18,
                             backgroundColor: AppColors.textFieldBorder,
-                            backgroundImage:
-                                user.photo != null ? NetworkImage(user.photo!) : null)),
+                            backgroundImage: user.photo != null
+                                ? NetworkImage(user.photo!)
+                                : null)),
                     label: '',
                   ),
                 ],

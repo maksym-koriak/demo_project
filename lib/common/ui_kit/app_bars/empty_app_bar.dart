@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:demo_app/common/ui_kit/app_bars/i_app_bar.dart';
+import 'package:flutter_interngram_delta/common/ui_kit/app_bars/i_app_bar.dart';
 
 class EmptyAppBar extends StatelessWidget with PreferredSizeWidget {
   final Function()? onPressed;

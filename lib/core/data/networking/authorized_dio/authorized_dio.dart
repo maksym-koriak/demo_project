@@ -17,10 +17,8 @@ class AuthorizedDio {
       ),
     )..interceptors.add(
         InterceptorsWrapper(
-          onRequest: (
-            RequestOptions requestOptions,
-            RequestInterceptorHandler handler,
-          ) async {
+          onRequest: (RequestOptions requestOptions,
+              RequestInterceptorHandler handler) async {
             final String? accessToken = await _readAccessToken();
             if (accessToken != null) {
               requestOptions.headers.putIfAbsent(
