@@ -104,10 +104,7 @@ class _TakePhotoScreenState extends State<TakePhotoScreen>
 
                 final imageFile = File(image.path);
 
-                AutoRouter.of(context).replace(CropPhotoRoute(
-                  imageFile: imageFile,
-                  editProfile: widget.editProfile,
-                ));
+                return imageFile;
               },
               frontCamera: () {
                 initController(direction);

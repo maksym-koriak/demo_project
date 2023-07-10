@@ -1,6 +1,5 @@
 import 'package:flutter_interngram_delta/features/user/data/dto/posts/post_value_dto.dart';
 import 'package:flutter_interngram_delta/features/user/domain/entities/posts/post.dart';
-import 'package:flutter_interngram_delta/features/user/domain/entities/posts/post_value.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'post_dto.freezed.dart';

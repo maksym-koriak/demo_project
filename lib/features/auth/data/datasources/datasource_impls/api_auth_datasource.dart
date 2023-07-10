@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_interngram_delta/core/data/storage/storage_constants.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -70,8 +69,6 @@ class ApiAuthDatasourceImpl implements AuthDatasource {
   Future<bool> signInFacebook() async {
     var tokensMap = await _api.signInFacebook();
     await _saveAccessTokens(tokensMap);
-    print(tokensMap);
-    print(tokensMap['registered'].toString());
     return tokensMap['registered'].toString() == 'false';
   }
 
@@ -79,7 +76,6 @@ class ApiAuthDatasourceImpl implements AuthDatasource {
   Future<bool> signInGoogle() async {
     var tokensMap = await _api.signInGoogle();
     await _saveAccessTokens(tokensMap);
-    print(tokensMap['registered'].toString());
     return tokensMap['registered'].toString() == 'true';
   }
 

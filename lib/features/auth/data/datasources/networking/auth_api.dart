@@ -5,11 +5,9 @@ import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_interngram_delta/core/data/exceptions/exceptions.dart';
-import 'package:flutter_interngram_delta/core/data/networking/authorized_dio/authorized_dio.dart';
 import 'package:flutter_interngram_delta/core/data/networking/dio_error_mapper.dart';
 import 'package:flutter_interngram_delta/features/auth/data/datasources/networking/auth_networking_constants.dart';
 import 'package:flutter_interngram_delta/features/auth/data/dto/auth_user_dto.dart';
-import 'package:flutter_interngram_delta/features/user/data/dto/user_dto.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class AuthApi {
@@ -50,9 +48,8 @@ abstract class AuthApi {
 
 class AuthApiImpl implements AuthApi {
   final Dio _dio;
-  final AuthorizedDio _authorizedDio;
 
-  AuthApiImpl(this._dio, this._authorizedDio);
+  AuthApiImpl(this._dio);
 
   @override
   Future<void> attemptAccess() {
@@ -289,11 +286,6 @@ class AuthApiImpl implements AuthApi {
         'bio': bio,
       };
       data.removeWhere((key, value) => value == null);
-      final response = await _authorizedDio.dio.patch(
-        updateUserUrl,
-        data: data,
-        options: Options(sendTimeout: 30000, receiveTimeout: 30000),
-      );
     } on DioError catch (exception) {
       throw exception.mapToCustomException();
     }
